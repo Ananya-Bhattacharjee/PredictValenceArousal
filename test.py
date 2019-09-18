@@ -1,5 +1,5 @@
 import pandas as pd
-df = pd.read_excel (r'D:\PapersIRead\vaemo.xlsx')
+df = pd.read_excel (r'vaemo.xlsx')
 import random
 df.sample(frac=1)
 
@@ -8,8 +8,8 @@ from sklearn.model_selection import train_test_split
 from sklearn import datasets, linear_model
 from sklearn.metrics import mean_squared_error, r2_score
 import matplotlib.pyplot as plt
-y=df.iloc[:,0:2]
-X=df.iloc[:,2:4]
+y=df.iloc[0:221,0:2]
+X=df.iloc[0:221,2:4]
 
 X_train, X_test, y_train, y_test     = train_test_split(X, y, test_size=0.2, random_state=1)
 
@@ -40,6 +40,7 @@ print bestregr.max_depth, bestregr.n_estimators
 y_pred = bestregr.predict(X_test)
 '''
 from sklearn.preprocessing import PolynomialFeatures
+from sklearn.ensemble import RandomForestRegressor
 poly = PolynomialFeatures(degree=1)
 X_train = poly.fit_transform(X_train)
 X_test = poly.fit_transform(X_test)
@@ -53,6 +54,10 @@ from sklearn.linear_model import Lasso
 regr = linear_model.LinearRegression()
 #regr = Lasso(alpha=0.01)
 # Train the model using the training sets
+
+#regr = RandomForestRegressor(max_depth=4, random_state=1,
+#                             n_estimators=10)
+#regr.fit(X_train, y_train)
 regr.fit(X_train, y_train)
 
 # Make predictions using the testing set
@@ -68,7 +73,9 @@ print("TEST Mean squared error: %.2f"
 # Explained variance score: 1 is perfect prediction
 print('TEST Variance score: %.2f' % r2_score(y_test, y_pred))
 
-#print y_test.shape
+plt.scatter(X_test, y_test)
+plt.plot(X_test, y_pred, color='red')
+plt.show()#print y_test.shape
 # Plot outputs
 #plt.plot(X_test[:0], X_test[:1], color='blue', linewidth=1)
 
