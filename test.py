@@ -8,8 +8,8 @@ from sklearn.model_selection import train_test_split
 from sklearn import datasets, linear_model
 from sklearn.metrics import mean_squared_error, r2_score
 import matplotlib.pyplot as plt
-y=df.iloc[0:221,0:2]
-X=df.iloc[0:221,2:4]
+y=df.iloc[:,0:2]
+X=df.iloc[:,2:4]
 
 X_train, X_test, y_train, y_test     = train_test_split(X, y, test_size=0.2, random_state=1)
 
