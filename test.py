@@ -11,8 +11,8 @@ import matplotlib.pyplot as plt
 
 start=1106
 end=1356
-y=df.iloc[:,1:2]
-X=df.iloc[:,3:4]
+y=df.iloc[start:end,1:2]
+X=df.iloc[start:end,3:4]
 
 X_train, X_test, y_train, y_test     = train_test_split(X, y, test_size=0.2, random_state=1)
 
