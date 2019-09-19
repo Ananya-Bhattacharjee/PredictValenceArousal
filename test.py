@@ -8,8 +8,11 @@ from sklearn.model_selection import train_test_split
 from sklearn import datasets, linear_model
 from sklearn.metrics import mean_squared_error, r2_score
 import matplotlib.pyplot as plt
-y=df.iloc[:,0:2]
-X=df.iloc[:,2:4]
+
+start=1106
+end=1356
+y=df.iloc[:,1:2]
+X=df.iloc[:,3:4]
 
 X_train, X_test, y_train, y_test     = train_test_split(X, y, test_size=0.2, random_state=1)
 
@@ -75,7 +78,7 @@ print('TEST Variance score: %.2f' % r2_score(y_test, y_pred))
 
 plt.scatter(X_test, y_test)
 plt.plot(X_test, y_pred, color='red')
-plt.show()#print y_test.shape
+#plt.show()#print y_test.shape
 # Plot outputs
 #plt.plot(X_test[:0], X_test[:1], color='blue', linewidth=1)
 
