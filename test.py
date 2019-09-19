@@ -9,10 +9,10 @@ from sklearn import datasets, linear_model
 from sklearn.metrics import mean_squared_error, r2_score
 import matplotlib.pyplot as plt
 
-start=1106
-end=1356
-y=df.iloc[start:end,1:2]
-X=df.iloc[start:end,3:4]
+start=778
+end=1106
+y=df.iloc[:,1:2]
+X=df.iloc[:,3:4]
 
 X_train, X_test, y_train, y_test     = train_test_split(X, y, test_size=0.2, random_state=1)
 
@@ -54,12 +54,12 @@ print(X_train)
 
 from sklearn.linear_model import Ridge
 from sklearn.linear_model import Lasso
-regr = linear_model.LinearRegression()
+#regr = linear_model.LinearRegression()
 #regr = Lasso(alpha=0.01)
 # Train the model using the training sets
 
-#regr = RandomForestRegressor(max_depth=4, random_state=1,
-#                             n_estimators=10)
+regr = RandomForestRegressor(max_depth=4, random_state=1,
+                             n_estimators=10)
 #regr.fit(X_train, y_train)
 regr.fit(X_train, y_train)
 
